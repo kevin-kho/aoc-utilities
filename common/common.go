@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"math"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func ReadInput(filePath string) ([]byte, error) {
@@ -15,6 +17,25 @@ func ReadInput(filePath string) ([]byte, error) {
 	}
 
 	return data, nil
+
+}
+
+func ParseIntArray(data []byte) ([]int, error) {
+	var res []int
+
+	for entry := range strings.SplitSeq(string(data), ",") {
+		entry = strings.TrimSpace(entry)
+
+		i, err := strconv.Atoi(entry)
+		if err != nil {
+			return res, err
+		}
+
+		res = append(res, i)
+
+	}
+
+	return res, nil
 
 }
 
