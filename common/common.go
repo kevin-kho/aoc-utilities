@@ -20,10 +20,10 @@ func ReadInput(filePath string) ([]byte, error) {
 
 }
 
-func ParseIntArray(data []byte) ([]int, error) {
+func ParseIntArray(data []byte, delimiter []byte) ([]int, error) {
 	var res []int
 
-	for entry := range strings.SplitSeq(string(data), ",") {
+	for entry := range strings.SplitSeq(string(data), string(delimiter)) {
 		entry = strings.TrimSpace(entry)
 
 		i, err := strconv.Atoi(entry)
